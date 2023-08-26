@@ -22,30 +22,24 @@ def main():
             # Call the process_podcast function to get podcast information
             podcast_info = process_podcast(podcast_url, podcast_path)
 
-    output_container = st.container()
-    
-    with output_container:
-        if podcast_info is not None:
-            st.header("Podcast Details")
-            st.write("Title:", podcast_info['podcast_details']['title'])
-            st.image(podcast_info['episode_image'])
-            
-            st.header("Episode Title")
-            st.write(podcast_info['episode_title'])
-            
-            st.header("Podcast Summary")
-            st.write(podcast_info['podcast_summary'])
-            
-            st.header("Podcast Guest")
-            st.write("Name:", podcast_info['podcast_guest']['guest_name'])
-            st.write("Summary:", podcast_info['podcast_guest']['guest_summary'])
-            st.write("Organization:", podcast_info['podcast_guest']['guest_organization'])
-            
-            st.header("Podcast Highlights")
-            st.write(podcast_info['podcast_highlights'])
-        
-        else:
-            st.write("Error: Unable to retrieve podcast information. Please check the URL.")
+    if podcast_info is not None:
+        output_container = st.container()
+        with output_container:
+                st.header("Podcast Details")
+                st.write("Title:", podcast_info['podcast_details']['title'])
+                st.image(podcast_info['episode_image'])
+                st.header("Episode Title")
+                st.write(podcast_info['episode_title'])
+                st.header("Podcast Summary")
+                st.write(podcast_info['podcast_summary'])
+                st.header("Podcast Guest")
+                st.write("Name:", podcast_info['podcast_guest']['guest_name'])
+                st.write("Summary:", podcast_info['podcast_guest']['guest_summary'])
+                st.write("Organization:", podcast_info['podcast_guest']['guest_organization'])
+                st.header("Podcast Highlights")
+                st.write(podcast_info['podcast_highlights'])
+    else:
+        st.write("Nothing to see here...")
             
 if __name__ == "__main__":
     main()
