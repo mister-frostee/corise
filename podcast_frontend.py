@@ -31,7 +31,7 @@ def main():
                 st.subheader("Raw Podcast Output:")
                 st.text(podcast_info)
                 st.header("Podcast Details")
-                st.write("Title:", podcast_info['podcast_details']['title'])
+                st.write("Title:", podcast_info['podcast_details']['podcast_title'])
                 st.image(podcast_info['episode_image'])
                 st.header("Episode Title")
                 st.write(podcast_info['episode_title'])
