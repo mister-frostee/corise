@@ -15,8 +15,9 @@ def main():
     podcast_url = st.sidebar.text_input("Enter the podcast URL:")
     if st.sidebar.button("Summarize"):
         
-        # Call the process_podcast function to get podcast information
-        podcast_info = process_podcast(podcast_url)
+        with st.spinner("Processing, please wait..."):
+            # Call the process_podcast function to get podcast information
+            podcast_info = process_podcast(podcast_url, podcast_path)
         
         if podcast_info is not None:
             # Create a section for outputs to the right
