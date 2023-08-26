@@ -17,7 +17,7 @@ def main():
     
     if st.sidebar.button("Summarize"):
         if podcast_url and not podcast_url.endswith('/'):
-        podcast_url += '/'
+            podcast_url += '/'
         with st.spinner("Processing..."):
             # Call the process_podcast function to get podcast information
             podcast_info = process_podcast(podcast_url, podcast_path)
