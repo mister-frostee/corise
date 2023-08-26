@@ -28,6 +28,8 @@ def main():
     if podcast_info is not None:
         output_container = st.container()
         with output_container:
+                st.subheader("Raw Podcast Output:")
+                st.text(podcast_info)
                 st.header("Podcast Details")
                 st.write("Title:", podcast_info['podcast_details']['title'])
                 st.image(podcast_info['episode_image'])
