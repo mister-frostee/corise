@@ -10,6 +10,9 @@ def process_podcast(url):
     return output
 
 def main():
+
+    podcast_info = None
+        
     st.title("Podcast Summarizer")
     
     st.sidebar.header("Input")
