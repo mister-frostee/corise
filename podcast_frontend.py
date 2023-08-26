@@ -13,7 +13,7 @@ def main():
     st.title("Podcast Summarizer")
     
     # Create a layout with columns
-    col1, col2 = st.beta_columns([1, 3])  # Width ratio of 1:3
+    col1, col2 = st.columns([1, 3])  # Width ratio of 1:3
     
     with col1:
         st.header("Input")
