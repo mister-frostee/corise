@@ -17,7 +17,7 @@ def main():
         
         with st.spinner("Processing, please wait..."):
             # Call the process_podcast function to get podcast information
-            podcast_info = process_podcast(podcast_url, podcast_path)
+            podcast_info = process_podcast(podcast_url)
         
         if podcast_info is not None:
             # Create a section for outputs to the right
