@@ -23,7 +23,7 @@ def main():
             podcast_url += '/'
         with st.spinner("Processing..."):
             # Call the process_podcast function to get podcast information
-            podcast_info = process_podcast(podcast_url, podcast_path)
+            podcast_info = process_podcast(podcast_url)
 
     if podcast_info is not None:
         output_container = st.container()
