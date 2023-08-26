@@ -10,40 +10,41 @@ def process_podcast(url):
     return output
 
 def main():
+    st.title("Podcast Summarizer")
     
-    # Create a sidebar for inputs
-    st.sidebar.header("Input")
-    podcast_url = st.sidebar.text_input("Enter the podcast URL:")
-    if st.sidebar.button("Summarize"):
-        
-        with st.spinner("Processing, please wait..."):
+    # Create a layout with columns
+    col1, col2 = st.beta_columns([1, 3])  # Width ratio of 1:3
+    
+    with col1:
+        st.header("Input")
+        podcast_url = st.text_input("Enter the podcast URL:")
+        if st.button("Summarize"):
             if podcast_url and not podcast_url.endswith('/'):
-                podcast_url += '/'
-            # Call the process_podcast function to get podcast information
-            podcast_info = process_podcast(podcast_url)
-        
+                    podcast_url += '/'
+            # Add a loading state while the process_podcast function is running
+            with st.spinner("Processing, please wait..."):
+                # Call the process_podcast function to get podcast information
+                podcast_info = process_podcast(podcast_url, podcast_path)
+
+    with col2:
         if podcast_info is not None:
-            # Create a section for outputs to the right
-            output_section = st.beta_container()
+            st.header("Podcast Details")
+            st.write("Title:", podcast_info['podcast_details']['title'])
+            st.image(podcast_info['episode_image'])
             
-            with output_section:
-                st.header("Podcast Details")
-                st.write("Title:", podcast_info['podcast_details']['title'])
-                st.image(podcast_info['episode_image'])
-                
-                st.header("Episode Title")
-                st.write(podcast_info['episode_title'])
-                
-                st.header("Podcast Summary")
-                st.write(podcast_info['podcast_summary'])
-                
-                st.header("Podcast Guest")
-                st.write("Name:", podcast_info['podcast_guest']['guest_name'])
-                st.write("Summary:", podcast_info['podcast_guest']['guest_summary'])
-                st.write("Organization:", podcast_info['podcast_guest']['guest_organization'])
-                
-                st.header("Podcast Highlights")
-                st.write(podcast_info['podcast_highlights'])
+            st.header("Episode Title")
+            st.write(podcast_info['episode_title'])
+            
+            st.header("Podcast Summary")
+            st.write(podcast_info['podcast_summary'])
+            
+            st.header("Podcast Guest")
+            st.write("Name:", podcast_info['podcast_guest']['guest_name'])
+            st.write("Summary:", podcast_info['podcast_guest']['guest_summary'])
+            st.write("Organization:", podcast_info['podcast_guest']['guest_organization'])
+            
+            st.header("Podcast Highlights")
+            st.write(podcast_info['podcast_highlights'])
         
         else:
             st.write("Error: Unable to retrieve podcast information. Please check the URL.")
