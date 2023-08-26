@@ -34,7 +34,7 @@ def main():
                 st.write("Title:", podcast_info['podcast_details']['podcast_title'])
                 st.header("Podcast Summary")
                 st.write(podcast_info['podcast_summary']['choices'][0]['message']['content'])
-                st.image(podcast_info['episode_image'])
+                st.image(podcast_info['podcast_details']['episode_image'])
                 st.header("Episode Title")
                 st.write(podcast_info['podcast_details']['episode_title'])
                 st.header("Podcast Guest")
