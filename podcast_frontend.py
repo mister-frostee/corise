@@ -1,5 +1,6 @@
 import streamlit as st
 import modal
+import openai
 import json
 import os
 
