@@ -12,21 +12,19 @@ def process_podcast(url):
 def main():
     st.title("Podcast Summarizer")
     
-    # Create a layout with columns
-    col1, col2 = st.columns([1, 3])  # Width ratio of 1:3
+    st.sidebar.header("Input")
+    podcast_url = st.sidebar.text_input("Enter the podcast URL:")
     
-    with col1:
-        st.header("Input")
-        podcast_url = st.text_input("Enter the podcast URL:")
-        if st.button("Summarize"):
-            if podcast_url and not podcast_url.endswith('/'):
-                    podcast_url += '/'
-            # Add a loading state while the process_podcast function is running
-            with st.spinner("Processing, please wait..."):
-                # Call the process_podcast function to get podcast information
-                podcast_info = process_podcast(podcast_url, podcast_path)
+    if st.sidebar.button("Summarize"):
+        if podcast_url and not podcast_url.endswith('/'):
+        podcast_url += '/'
+        with st.spinner("Processing..."):
+            # Call the process_podcast function to get podcast information
+            podcast_info = process_podcast(podcast_url, podcast_path)
 
-    with col2:
+    output_container = st.container()
+    
+    with output_container:
         if podcast_info is not None:
             st.header("Podcast Details")
             st.write("Title:", podcast_info['podcast_details']['title'])
